@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -18,14 +19,12 @@ public class UserController {
         return userService.getUserByUserName(userName).toString();
     }
 
-    @RequestMapping("/")
-    public String userIndex() {
-        return "user index";
-    }
-
-    @RequestMapping("/register/add")
-    public String addUser(String userName, String email){
-        boolean result = userService.addUser(userName, email);
+    @RequestMapping("/register")
+    public String addUser(String userName, String email, String password){
+        if (null == userName) {
+            throw new RuntimeException("用户名不能为空！");
+        }
+        boolean result = userService.addUser(userName, email, password);
         if (result) {
             return "login";
         } else {

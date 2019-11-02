@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>login</title>
 </head>
 <body>
-<form action="/login" method="post">
-    userName:<input id="userName" type="text"><br>
-    email:<input id="passoword" type="text"><br>
+<form action="/login/login" method="post">
+    userName:<input name="userName" type="text"><br>
+    password:<input name="password" type="text"><br>
     <input type="submit" value="登录">
 </form>
 </body>

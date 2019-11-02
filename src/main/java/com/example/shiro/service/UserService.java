@@ -21,7 +21,7 @@ public class UserService {
         return user;
     }
 
-    public boolean addUser(String userName, String email) {
+    public boolean addUser(String userName, String email, String password) {
         User u = userMapper.getUserByUserName(userName);
         if (u != null) {
             throw new RuntimeException("用户名已存在！");
@@ -31,6 +31,7 @@ public class UserService {
         user.setUsername(userName);
         user.setEmail(email);
         user.randomSalt();
+        user.setPassword(password);
         PasswordHelper.encryptPassword(user);
         int result = userMapper.addUser(user);
         if (result > 0) {

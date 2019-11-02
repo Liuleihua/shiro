@@ -65,8 +65,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/logout", "logout");
         //放开拦截
         filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/register", "anon");
-        filterChainDefinitionMap.put("/register/add", "anon");
+        //filterChainDefinitionMap.put("/register", "anon");
+        //filterChainDefinitionMap.put("/register/add", "anon");
         //filterChainDefinitionMap.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
