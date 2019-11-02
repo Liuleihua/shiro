@@ -30,7 +30,7 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-        User user = (User) principalCollection;
+        User user = (User) principalCollection.getPrimaryPrincipal();
         List<Role> roleList = roleService.getRolesByUserId(user.getUserId());
         simpleAuthorizationInfo.addRoles(roleList.stream().map(Role::getRoleName).collect(Collectors.toSet()));
         return simpleAuthorizationInfo;

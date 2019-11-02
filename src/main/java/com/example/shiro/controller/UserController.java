@@ -1,6 +1,7 @@
 package com.example.shiro.controller;
 
 import com.example.shiro.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ public class UserController {
 
     @RequestMapping("/getUser/{userName}")
     @ResponseBody
+    @RequiresRoles({"admin"})
     public String getUserByUserName(@PathVariable String userName){
         System.out.println("userController: --------");
         return userService.getUserByUserName(userName).toString();
