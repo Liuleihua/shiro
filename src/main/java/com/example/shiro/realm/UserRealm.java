@@ -47,7 +47,7 @@ public class UserRealm extends AuthorizingRealm {
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
         User user = userService.getUserByUserName(usernamePasswordToken.getUsername());
         if (null == user) {
-            throw new UnknownAccountException("用户名或密码错误");
+            throw new UnknownAccountException("用户不存在！");
         }
         SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(user.getSalt()),
                 getName());
