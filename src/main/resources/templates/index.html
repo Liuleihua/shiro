@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
     <title>index</title>
 </head>
 <body>
-login success
-<a href="/user/getUser/zhangsan">张三</a>
+login success<br>
+
+<a shiro:hasRole="admin" href="/user/getUser/zhangsan">张三</a>
 </body>
 </html>

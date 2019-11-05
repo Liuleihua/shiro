@@ -15,7 +15,7 @@ public class UserController {
 
     @RequestMapping("/getUser/{userName}")
     @ResponseBody
-    @RequiresRoles({"admin"})
+    //@RequiresRoles({"admin"})
     public String getUserByUserName(@PathVariable String userName){
         System.out.println("userController: --------");
         return userService.getUserByUserName(userName).toString();

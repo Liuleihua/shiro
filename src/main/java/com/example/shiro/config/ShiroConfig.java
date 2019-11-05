@@ -1,5 +1,6 @@
 package com.example.shiro.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.example.shiro.realm.UserRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -12,7 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.apache.shiro.mgt.SecurityManager;
 
-import javax.servlet.Filter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -72,6 +72,14 @@ public class ShiroConfig {
         return shiroFilterFactoryBean;
     }
 
+    /**
+     * 添加ShiroDialect 为了在thymeleaf里使用shiro的标签的bean
+     * @return
+     */
+    @Bean(name = "shiroDialect")
+    public ShiroDialect shiroDialect(){
+        return new ShiroDialect();
+    }
     /**
      * 管理bean生命周期
      *
