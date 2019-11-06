@@ -17,7 +17,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/login")
+
 public class LoginController {
 
     @RequestMapping("/register")
@@ -25,7 +25,7 @@ public class LoginController {
         return "register";
     }
 
-    @RequestMapping("/page")
+    @GetMapping("/login")
     public String loginPage() {
         return "login";
     }
@@ -37,7 +37,7 @@ public class LoginController {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         Map<String, String> map=new HashMap<String, String>();
 
-        if(vcode==null||vcode==""){
+        if(vcode == null||vcode == ""){
             resultMap.put("status", 500);
             resultMap.put("message", "验证码不能为空！");
             return resultMap;
@@ -63,6 +63,7 @@ public class LoginController {
         try{
             subject.login(user);
             resultMap.put("status", 200);
+            session.setAttribute("user_name", user.getUsername());
             resultMap.put("message", "登录成功");
         }catch (Exception e){
             resultMap.put("status", 400);

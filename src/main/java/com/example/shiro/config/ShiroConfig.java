@@ -19,7 +19,6 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
     private static final String LOGIN_URL = "/login";
-
     /**
      * 凭证匹配，加密算法
      *

@@ -8,7 +8,7 @@
 </head>
 <body>
 login success<br>
-
+<span th:text="${user_name}"></span><br>
 <a shiro:hasRole="admin" href="/user/getUser/zhangsan">张三</a>
 </body>
 </html>
